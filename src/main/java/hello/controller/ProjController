@@ -1,0 +1,63 @@
+package hello.controller;
+
+import hello.model.Proj;
+import hello.model.ProjDao;
+import hello.model.User;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+public class ProjController {
+	
+  @RequestMapping("/QuickProj")
+  @ResponseBody
+  public String QuickProj(String creator, String name){
+    Proj proj = null;
+    try {
+      proj = new Proj(creator, name);
+      projDao.save(proj);
+    }
+    catch (Exception ex) {
+      return "Error creating the project: " + ex.toString();
+    }
+    return "Project succesfully created (  id = " + proj.getId() + "Project  name = " + 
+    proj.getName() + " Creator = " + proj.getCreator() + ")";
+  }
+  
+  @RequestMapping("/projtest")
+  @ResponseBody
+  public Proj projtest(String creator, String name){
+    Proj proj = null;
+    String er = "error";
+    try {
+      proj = new Proj(creator, name);
+      projDao.save(proj);
+    }
+    catch (Exception ex) {
+      return proj = new Proj(er);
+	}
+	return proj;
+}
+  
+  @RequestMapping("/get-proj-name")
+  @ResponseBody
+  public Proj getByName(String name) {
+	Proj proj= null;
+    String er = "error";
+    try {
+      proj = projDao.findByName(name);
+    }
+    catch (Exception ex) {
+      return proj = new Proj(er);
+    }
+    return proj;
+  }
+  
+
+  @Autowired
+  private ProjDao projDao;
+}
