@@ -1,0 +1,144 @@
+package hello.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+
+@Entity
+@Table(name = "project")
+public class Proj {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long proj_id;
+  
+  // The project name
+  @NotNull
+  private String name;
+  
+  // The creator of the project
+  @NotNull
+  private String creator;
+  
+  // The Adminsusers
+  private String userA;
+  
+  // The Assigned users
+  private String userW;
+  
+  // The project description
+  private String description;
+  
+  // Project priority
+  private int Priorities;
+  
+  // Range of the project 
+  private int rang;
+
+  
+  /** Constructors */
+  // default constructor  
+  public Proj() {} 
+  
+  // Overloaded constructor 1
+  public Proj(String creator, String name){
+	  this.creator = creator;
+	  this.name = name;
+  }
+  
+//  Overloaded constructor 2
+  public Proj(String creator, String name, String userA, String userW, 
+		  String description, int Priorities){
+	  this.creator = creator;
+	  this.name = name;
+	  this.userA = userA;
+	  this.userW = userW ;
+	  this.description = description; 
+	  this.Priorities = Priorities ; 
+  }
+  
+  
+  // Error creator
+  public Proj(String er){
+	  this.name = er;
+	  this.name = er;
+	  this.userA = er;
+	  this.userW = er ;
+	  this.description = er; 
+	  this.Priorities = 0 ; 
+  }
+  
+public long getId() {
+    return proj_id;
+  }
+
+public void setId(long value) {
+    this.proj_id = value;
+ }
+
+ public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
+
+public String getCreator() {
+	return creator;
+}
+
+public void setCreator(String creator) {
+	this.creator = creator;
+}
+
+public String getUserA() {
+	return userA;
+}
+
+public void setUserA(String userA) {
+	this.userA = userA;
+}
+
+public String getUserW() {
+	return userW;
+}
+
+public void setUserW(String userW) {
+	this.userW = userW;
+}
+
+public String getDescription() {
+	return description;
+}
+
+public void setDescription(String description) {
+	this.description = description;
+}
+
+public int getPriorities() {
+	return Priorities;
+}
+
+public void setPriorities(int priorities) {
+	Priorities = priorities;
+}
+
+public String error() {
+	// TODO Auto-generated method stub
+	return "EROR project creation";
+}
+
+public int getRang() {
+	return rang;
+}
+
+public void setRang(int rang) {
+	this.rang = rang;
+} 
+ 
+}
