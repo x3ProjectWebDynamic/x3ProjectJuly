@@ -1,0 +1,18 @@
+package hello.model;
+
+import javax.transaction.Transactional;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@Transactional
+public interface ProjDao extends CrudRepository<Proj, Long> {
+  /**
+   * Return the user having the passed email or null if no user is found.
+   * 
+   * @param email the user email.
+   */
+  public Proj findByName(String name);
+  
+} // class UserDao
+
